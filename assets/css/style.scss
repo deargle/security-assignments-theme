@@ -1,8 +1,8 @@
 ---
 ---
-body { 
+body {
     /* padding-top: 20px; */
-    font-weight: 200; 
+    font-weight: 200;
 }
 @media (max-width: 768px) {
     body { padding-top: 0; }
@@ -104,7 +104,7 @@ body {
 
 @import "svg-icons";
 
-	
+
 dt {
     margin-top: 5px;
 }
@@ -148,4 +148,9 @@ nav[data-toggle="toc"] {
     display: block;
   }
   */
+}
+
+blockquote {
+  border-left: 5px solid #dee2e6;
+  padding-left: 1em;
 }
