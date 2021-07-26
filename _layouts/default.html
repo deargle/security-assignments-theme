@@ -7,13 +7,13 @@
   <link type="text/plain" rel="author" href="{{ site.baseurl }}/humans.txt" />
   <link rel="shortcut icon" href="/favicon.ico?v={{ site.github.build_revision }}">
 
-  {% if site.instructorcollab_username == 'deargle' %}
-      <link href="{{ site.baseurl }}/assets/css/bootstrap-custom-darkly.css?v={{ site.github.build_revision }}" rel="stylesheet" media="screen">
-      {% assign navbar-class = 'navbar-dark bg-primary' %}
-  {% else %}
-      <link href="{{ site.baseurl }}/assets/css/bootstrap-custom-litera.css?v={{ site.github.build_revision }}" rel="stylesheet" media="screen">
-      {% assign navbar-class = 'navbar-light bg-light' %}
-  {% endif %}
+
+  {% capture light_css_file %}{{ site.baseurl }}/assets/css/bootstrap-custom-litera.css?v={{ site.github.build_revision }}{% endcapture %}
+  {% capture dark_css_file %}{{ site.baseurl }}/assets/css/bootstrap-custom-darkly.css?v={{ site.github.build_revision }}{% endcapture %}
+  <link id='css-theme' href="{{ light_css_file }}" rel="stylesheet" media="screen">
+
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/slider-toggle.css?v={{ site.github.build_revision }}" media="screen">
+
   <link href="{{ site.baseurl }}/assets/css/style.css?v={{ site.github.build_revision }}" rel="stylesheet" media="screen">
   <link
     rel="stylesheet"
@@ -33,10 +33,10 @@
     data-spy="scroll" data-target="#toc"
     >
 
-<nav class="navbar navbar-expand-lg {{navbar-class}}">
+<nav id='navbar-main' class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="{{ '/' | relative_url }}">Infosec Management</a>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" href="{{ '/' | relative_url }}">Home</a>
       </li>
@@ -47,6 +47,14 @@
         <a class="nav-link" href="{{ '/tutorials' | relative_url }}">Tutorials</a>
       </li>
     </ul>
+    <!-- https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8 -->
+    <div class="theme-switch-wrapper">
+      <label class="theme-switch" for="checkbox">
+        <input type="checkbox" id="checkbox" />
+        <div class="slider round"></div>
+      </label>
+      <em>Enable Dark Mode</em>
+    </div>
   </div>
 </nav>
 
@@ -80,6 +88,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 </script>
 
+<script type="text/javascript">
+// https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8
+const light_css_file = "{{ light_css_file }}";
+const dark_css_file  = "{{ dark_css_file }}";
+</script>
+
+<script src="{{ site.baseurl }}/assets/js/slider-toggle.js?v={{ site.github.build_revision }}"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
