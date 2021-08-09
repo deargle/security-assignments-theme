@@ -1,4 +1,5 @@
 <script type='text/javascript'>
+  document.addEventListener("DOMContentLoaded", function(event) {
     var $ul = $('<ul></ul>').addClass('nav nav-pills');
     $('{{ include.selector | default: "h1:not(.title)" }}').each(function() {
         var anchor_location = $(this).text().toLowerCase().replace(/ /g, '-').replace(/,/g, '');
@@ -8,5 +9,5 @@
         $ul.append($li);
     });
     $('#nav-bar').append($ul);
-    
+  })
 </script>
