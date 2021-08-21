@@ -7,10 +7,17 @@
   <link type="text/plain" rel="author" href="{{ site.baseurl }}/humans.txt" />
   <link rel="shortcut icon" href="/favicon.ico?v={{ site.github.build_revision }}">
 
+  <link id='css-theme' href="{{ site.baseurl }}/assets/css/bootstrap-custom-litera.css?v={{ site.github.build_revision }}" rel="stylesheet" media="screen">
 
-  {% capture light_css_file %}{{ site.baseurl }}/assets/css/bootstrap-custom-litera.css?v={{ site.github.build_revision }}{% endcapture %}
   {% capture dark_css_file %}{{ site.baseurl }}/assets/css/bootstrap-custom-darkly.css?v={{ site.github.build_revision }}{% endcapture %}
-  <link id='css-theme' href="{{ light_css_file }}" rel="stylesheet" media="screen">
+  <!-- javascript optionally turns on the dark mode, which overrides the light mode because it comes second -->
+  <link id='dark-css-theme' href="" rel="stylesheet" media="screen">
+  <!--  Do this in the head to reduce flashing? -->
+  <script type="text/javascript">
+  // https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8
+    const dark_css_file  = "{{ dark_css_file }}";
+  </script>
+  <script src="{{ site.baseurl }}/assets/js/slider-toggle.js?v={{ site.github.build_revision }}"></script>
 
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/slider-toggle.css?v={{ site.github.build_revision }}" media="screen">
 
@@ -37,15 +44,14 @@
   <a class="navbar-brand" href="{{ '/' | relative_url }}">Infosec Management</a>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="{{ '/' | relative_url }}">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ '/labs' | relative_url }}">Labs</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ '/tutorials' | relative_url }}">Tutorials</a>
-      </li>
+      {% for path in site.nav_pages %}
+        {% assign nav_page=site.pages | where:"path",path | first %}
+        <li class="nav-item">
+          <a href="{{ nav_page.url | relative_url }}" class="nav-link{% if page.url == nav_page.url %} active{% endif %}">
+            {{ nav_page.title }}
+          </a>
+        </li>
+      {% endfor %}
     </ul>
     <!-- https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8 -->
     <div class="theme-switch-wrapper">
@@ -88,13 +94,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 </script>
 
-<script type="text/javascript">
-// https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8
-const light_css_file = "{{ light_css_file }}";
-const dark_css_file  = "{{ dark_css_file }}";
-</script>
-
-<script src="{{ site.baseurl }}/assets/js/slider-toggle.js?v={{ site.github.build_revision }}"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
