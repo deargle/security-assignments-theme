@@ -17,8 +17,11 @@ layout: default
         class='title'
     >{{ page.title }}</h1>
 
-    {{ content }}
+    <div class='content'>
+      {{ content }}
+    </div>
 
   </div>
 
 {% include nav-pills.html %}
+{% include open-links-new-tab.html %}
