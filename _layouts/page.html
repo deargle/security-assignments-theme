@@ -3,25 +3,23 @@ layout: default
 ---
 
 <div class='row'>
+    <div class="col-sm-9">
+      <!-- main content area -->
+      <h1
+          data-toc-skip
+          class='title'
+      >{{ page.title }}</h1>
+
+      <div class='content'>
+        {{ content }}
+      </div>
+    </div>
     {% if page.include_toc %}
     <div class="col-sm-3">
         <nav id="toc" class='sticky-top' data-spy="affix" data-toggle="toc"></nav>
     </div>
-    <div class="col-sm-9">
-    {% else %}
-    <div class="col-sm-9">
     {% endif %}
-    <!-- main content area -->
-    <h1
-        data-toc-skip
-        class='title'
-    >{{ page.title }}</h1>
-
-    <div class='content'>
-      {{ content }}
-    </div>
-
-  </div>
+</div>
 
 {% include nav-pills.html %}
 {% include open-links-new-tab.html %}
