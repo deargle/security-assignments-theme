@@ -40,29 +40,7 @@
     data-spy="scroll" data-target="#toc"
     >
 
-<nav id='navbar-main' class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav mr-auto">
-      {% for path in site.nav_pages %}
-        {% assign nav_page=site.pages | where:"path",path | first %}
-        <li class="nav-item">
-          <a href="{{ nav_page.url | relative_url }}" class="nav-link{% if page.url == nav_page.url %} active{% endif %}">
-            {{ nav_page.title }}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-    <!-- https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8 -->
-    <div class="theme-switch-wrapper">
-      <label class="theme-switch" for="checkbox">
-        <input type="checkbox" id="checkbox" />
-        <div class="slider round"></div>
-      </label>
-      <em>Enable Dark Mode</em>
-    </div>
-  </div>
-</nav>
+{% include navbar.html %}
 
 <div class="container">
 
