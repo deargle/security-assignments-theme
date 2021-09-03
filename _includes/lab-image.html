@@ -1,5 +1,20 @@
-{%- assign image_path = '/labs/images/' | append: include.image | relative_url -%}
-{%- if include.width -%}
-{%- assign width_style = 'width="{{ include.width }}"' -%}
+{%- capture image_path %}{{ site.baseurl }}/labs/images/{{ include.image }}{% endcapture -%}
+<div>
+  <a href="{{ image_path }}" target="_blank">
+    <img
+      src="{{ image_path }}"
+      class="shadow-sm img-fluid img-thumbnail mb-2"
+      {%- if include.width %}
+        width="{{ include.width }}"
+      {%- endif -%}
+      {%- if include.alt %}
+        alt="{{ include.alt }}"
+      {%- else %}
+        alt="{{ include.image | replace: '-', ' ' | replace: '.png', '' | replace: '.jpg', '' | replace: '.gif', '' }}"
+      {%- endif -%}
+    />
+  </a>
+{%- if include.caption -%}
+  <p>{{ include.caption }}</p>
 {%- endif -%}
-<a href="{{image_path}}" target="_blank"><img {{width_style}} src="{{image_path}}" /></a>
+</div>
