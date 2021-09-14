@@ -1,1 +1,4 @@
-<div class='alert alert-warning'><strong>Question: </strong>{{ include.question }}</div>
+<div class='lab-question alert alert-warning'>
+  <!-- lab-question-number gets set via javascript -->
+  <strong>Question <span class='lab-question-number'></span>: </strong>
+  <span class='lab-question-text'>{{ include.question | markdownify | remove: '<p>' | remove: '</p>' }}</span></div>

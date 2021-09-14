@@ -2,7 +2,7 @@
   let content = document.getElementsByClassName('content');
   if (content.length) {
     Array.from(content[0].getElementsByTagName('a')).forEach(link=>{
-      if (link.protocol.includes('http')){
+      if (link.protocol.includes('http') && !link.attributes.href.value.startsWith('#')){
         link.target = '_blank';
       }
     })

@@ -1,0 +1,27 @@
+<script type="text/javascript">
+  let question_list = document.getElementById('question-list')
+  let lab_questions = Array.from(document.getElementsByClassName('lab-question'))
+
+  if (lab_questions.length) {
+    // header
+    let h1 = document.createElement('h1')
+    h1.append('Question List');
+    question_list.append(h1);
+
+    // question list
+    let ul = document.createElement('ul')
+    lab_questions.forEach((element, index) => {
+      let question_number = index + 1;
+      let element_id = `lab-question-${question_number}`;
+      element.id = element_id;
+      element.getElementsByClassName('lab-question-number')[0].innerText = question_number;
+      let li = document.createElement('li')
+      let a = document.createElement('a')
+      a.append(question_number)
+      a.href = `#${element_id}`;
+      li.append(a)
+      ul.append(li)
+    })
+    question_list.append(ul);
+  }
+</script>
