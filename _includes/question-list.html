@@ -4,9 +4,11 @@
 
   if (lab_questions.length) {
     // header
-    let h1 = document.createElement('h1')
+    let h1 = document.createElement('h1');
     h1.append('Question List');
-    question_list.append(h1);
+    let p = document.createElement('p');
+    p.append('For quick reference to lab questions on this page.');
+    question_list.append(h1, p);
 
     // question list
     let ul = document.createElement('ul')
