@@ -1,8 +1,8 @@
-{%- capture image_path %}/labs/images/{{ include.image }}{% endcapture -%}
+{%- capture image_path %}{{ site.baseurl }}/labs/images/{{ include.image }}{% endcapture -%}
 <div>
-  <a href="{% link image_path %}" target="_blank">
+  <a href="{{ image_path }}" target="_blank">
     <img
-      src="{% link image_path %}"
+      src="{{ image_path }}"
       class="shadow-sm img-fluid img-thumbnail mb-2"
       {%- if include.width %}
         width="{{ include.width }}"
