@@ -12,13 +12,17 @@
 
     // question list
     let ul = document.createElement('ul')
+    ul.classList.add('nav', 'nav-pills')
+
     lab_questions.forEach((element, index) => {
       let question_number = index + 1;
       let element_id = `lab-question-${question_number}`;
       element.id = element_id;
       element.getElementsByClassName('lab-question-number')[0].innerText = question_number;
       let li = document.createElement('li')
+      li.classList.add('nav-item')
       let a = document.createElement('a')
+      a.classList.add('nav-link', 'px-3')
       a.append(question_number)
       a.href = `#${element_id}`;
       li.append(a)
