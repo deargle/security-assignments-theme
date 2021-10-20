@@ -1,9 +1,15 @@
+@import "svg-icons";
+
 body {
     /* padding-top: 20px; */
     font-weight: 200;
 }
 @media (max-width: 768px) {
     body { padding-top: 0; }
+}
+
+pre.highlight {
+  padding: 1.25em;
 }
 
 /* Contact social icons */
@@ -99,8 +105,6 @@ body {
 .gist .pl-c1 { color: #007faa !important; }
 
 #zen { font-size: 8px; padding: 20px 0px; }
-
-@import "svg-icons";
 
 
 dt {

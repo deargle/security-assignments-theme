@@ -31,7 +31,18 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here. Describe your available layouts, includes, sass and/or assets.
+
+The theme includes a navbar at the top that can toggle between "light" and
+"dark" themes.  These themes load `boostrap-custom-litera.scss` and
+`bootstrap-custom-darkly.scss` bootswatch themes respectively.  These files are
+found in `/assets/css/`, and they load corresponding files in the `_sass`
+directory. Those files in the sass directory in turn load their own pygments
+stylesheets (`github.scss`, `base15.monokai.dark.scss`) which were generated via
+`rougify style [stylename] > [file].scss`.
+
+Preview the generated styles by running `bundle exec jekyll s`.
+
+
 
 ## Contributing
 
@@ -49,4 +60,3 @@ To add a custom directory to your theme-gem, please edit the regexp in `security
 ## License
 
 The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
