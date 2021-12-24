@@ -1,3 +1,10 @@
+plugins:
+  - jekyll-seo-tag
+  - jekyll-avatar
+  - jekyll-github-metadata
+  - jekyll-feed
+ # - jekyll-include-cache
+
 exclude:
   - vendor/bundle
   - node_modules

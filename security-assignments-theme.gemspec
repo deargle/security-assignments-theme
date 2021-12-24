@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_layouts|_includes|_sass|LICENSE|README)!i) }
 
   spec.add_runtime_dependency 'github-pages', '>= 167'
-  spec.add_runtime_dependency 'jekyll-include-cache'
+  # spec.add_runtime_dependency 'jekyll-include-cache'
   spec.add_runtime_dependency 'jekyll-avatar', '~> 0.5'
   spec.add_runtime_dependency 'jekyll-feed', '~> 0.9'
   spec.add_runtime_dependency 'jekyll-github-metadata', '~> 2.9'
