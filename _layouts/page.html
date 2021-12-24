@@ -2,13 +2,18 @@
 layout: default
 ---
 
-<div class='row'>
+<div class='row mt-4'>
     <div class="col-sm-9">
       <!-- main content area -->
       <h1
           data-toc-skip
-          class='title'
+          class='title display-4'
       >{{ page.title }}</h1>
+
+      {% if page.description %}
+      <p class='lead'>{{ page.description }}</p>
+      {% endif %}
+
 
       <div class='content'>
         {{ content }}
@@ -21,5 +26,4 @@ layout: default
     </div>
 </div>
 
-{% include nav-pills.html %}
 {% include open-links-new-tab.html %}

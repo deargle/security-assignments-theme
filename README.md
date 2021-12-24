@@ -29,8 +29,8 @@ Or install it yourself as:
 
     $ gem install security-assignments-theme
 
-## Usage
 
+## Usage
 
 The theme includes a navbar at the top that can toggle between "light" and
 "dark" themes.  These themes load `boostrap-custom-litera.scss` and
@@ -42,6 +42,12 @@ stylesheets (`github.scss`, `base15.monokai.dark.scss`) which were generated via
 
 Preview the generated styles by running `bundle exec jekyll s`.
 
+
+## Building styles
+
+`yarn run sass`
+
+Builds everything in the `/sass` folder.
 
 
 ## Contributing
