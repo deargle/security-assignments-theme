@@ -16,7 +16,7 @@ import './bootstrap-toc';
 window.Collapse = Collapse;
 
 const anchors = new AnchorJS();
-anchors.add('h1:not(.title)', 'h2', 'h3', 'h4', 'h5', 'h6');
+anchors.add('h1:not(.title), h2, h3, h4, h5, h6');
 
 // document.addEventListener('turbo:load', () => {
 //   anchors.add();
