@@ -10,7 +10,7 @@ const config: webpack.Configuration = {
   },
   mode: 'production',
   plugins: [
-    new MiniCssExtractPlugin({ filename: 'css/style.css' }),
+    new MiniCssExtractPlugin({ filename: '_sass/security-assignments-theme.scss' }),
   ],
   optimization: {
     minimize: true,
