@@ -6,8 +6,7 @@ layout: default
     <div class="col-sm-9">
       <!-- main content area -->
       <h1
-          data-toc-skip
-          class='title display-4'
+          class='title display-4 js-toc-ignore'
       >{{ page.title }}</h1>
 
       {% if page.description %}
@@ -15,13 +14,13 @@ layout: default
       {% endif %}
 
 
-      <div class='content'>
+      <div class='content js-toc-content pt-3'>
         {{ content }}
       </div>
     </div>
     <div class="col-sm-3">
       {% if page.include_toc %}
-          <nav id="toc" class='sticky-top' data-spy="affix" data-toggle="toc"></nav>
+        <nav id="toc" data-toggle="toc" class='toc js-toc pt-3'></nav>
       {% endif %}
     </div>
 </div>
