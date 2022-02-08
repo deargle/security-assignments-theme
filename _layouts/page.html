@@ -3,7 +3,7 @@ layout: default
 ---
 
 <div class='row mt-4'>
-    <div class="col-sm-9">
+    <div class="col-md-9 col-sm-12">
       <!-- main content area -->
       <h1
           class='title display-4 js-toc-ignore'
@@ -18,7 +18,7 @@ layout: default
         {{ content }}
       </div>
     </div>
-    <div class="col-sm-3">
+    <div class="col-3 d-none d-md-block d-print-none">
       {% if page.include_toc %}
         <nav id="toc" data-toggle="toc" class='toc js-toc pt-3'></nav>
       {% endif %}
