@@ -2,4 +2,8 @@
   user-select: none;
 }
 
+strong {
+  font-weight: bold;
+}
+
 /*# sourceMappingURL=style-overrides.css.map */
