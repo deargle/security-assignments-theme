@@ -1,20 +1,24 @@
 {%- capture image_path %}{{ site.baseurl }}/labs/images/{{ include.image }}{% endcapture -%}
-<div>
-  <a href="{{ image_path }}" target="_blank">
-    <img
-      src="{{ image_path }}"
-      class="shadow-sm img-fluid img-thumbnail mb-2"
-      {%- if include.width %}
-        width="{{ include.width }}"
-      {%- endif -%}
-      {%- if include.alt %}
-        alt="{{ include.alt }}"
-      {%- else %}
-        alt="{{ include.image | replace: '-', ' ' | replace: '.png', '' | replace: '.jpg', '' | replace: '.gif', '' }}"
-      {%- endif -%}
-    />
-  </a>
-{%- if include.caption -%}
-  <p><em>{{ include.caption }}</em></p>
+{%- if include.link -%}
+{%- assign link = include.link %}
+{%- else -%}
+{%- assign link = image_path -%}
 {%- endif -%}
-</div>
+<figure class="text-center" id="{{ include.image | slugify }}">
+      <a href="{{ link }}" target="_blank">
+      <img
+        src="{{ image_path }}"
+        class="shadow-sm img-fluid img-thumbnail mb-2 figure-img"
+        {%- if include.width %}
+          width="{{ include.width }}"
+        {%- endif -%}
+        {%- if include.alt %}
+          alt="{{ include.alt }}"
+        {%- else %}
+          alt="{{ include.image | replace: '-', ' ' | replace: '.png', '' | replace: '.jpg', '' | replace: '.gif', '' }}"
+        {%- endif -%}/>
+      </a>
+      {%- if include.caption -%}
+      <figcaption class="figure-caption">{{ include.caption }}</figcaption>
+      {%- endif -%}
+</figure>

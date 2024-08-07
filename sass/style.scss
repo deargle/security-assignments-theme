@@ -169,3 +169,38 @@ li.task-list-item {
 li.task-list-item .task-list-item-checkbox {
   margin: 0 0.2em 0.25em -1.6em;
 }
+
+
+// copied from random blog https://jeffchen.dev/posts/Markdown-Image-Captions/
+
+p:empty ~ figure {
+	margin-top: .25rem;
+}
+
+figure {
+	margin-bottom: var(--vertical-margin);
+	margin-top: var(--vertical-margin);
+}
+
+figure img.background {
+	box-shadow: var(--shadow-size) var(--shadow-size) 0 0 var(--primary);
+}
+
+figure {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	width: calc(100% - var(--shadow-size));
+}
+
+img {
+	height: auto;
+	max-width: 100%;
+}
+
+figure figcaption {
+	font-size: small;
+	margin-top: .75rem;
+	padding: .75rem 0 0;
+	text-align: center;
+}
