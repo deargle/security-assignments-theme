@@ -1,0 +1,33 @@
+#!/bin/sh
+# Preview this theme's own minimal Jekyll site (index.md, _layouts,
+# _includes) locally at http://localhost:4001, using a Ruby 2.7 Docker
+# image built from this repo's own Dockerfile -- no local Ruby/bundler
+# install required, and no dependency on any other repo. Runs in the
+# foreground; Ctrl+C to stop.
+#
+# This serves the theme repo directly as its own Jekyll site (no
+# remote_theme/gem-path indirection), so --watch reliably picks up changes
+# to everything in this repo, including assets/js/bundle.js and
+# assets/css/*.css written by script/watch-docker -- run both at once in
+# separate terminals for a fast edit-rebuild-reload loop:
+#   script/watch-docker   # rebuilds assets/js/bundle.js, assets/css/*.css
+#   script/serve-docker   # serves http://localhost:4001 with live reload
+#
+# Usage: script/serve-docker
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+IMAGE=security-assignments-theme-dev:latest
+
+if ! docker image inspect "$IMAGE" >/dev/null 2>&1; then
+  echo "==> Building $IMAGE from ./Dockerfile (one-time, cached after this)"
+  docker build -t "$IMAGE" .
+fi
+
+docker run --rm -it \
+  -v "$PWD":/site \
+  -p 4001:4000 \
+  "$IMAGE" \
+  sh -c "bundle check || bundle install && exec bundle exec jekyll serve --host 0.0.0.0 --port 4000 --watch --force_polling --incremental"

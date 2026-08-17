@@ -1,0 +1,26 @@
+#!/bin/sh
+# Watch mode: rebuilds assets/js/bundle.js and assets/css/*.css on every
+# save, using a throwaway node:20 Docker container (no local node/npm/yarn
+# install required). Companion to script/build-docker (one-shot build) and
+# script/serve-docker (live preview) -- run this in a terminal and leave it
+# running while editing js/*.ts or sass/*.scss. Ctrl+C to stop.
+#
+# Usage: script/watch-docker
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+docker run --rm -it \
+  -v "$PWD":/work \
+  -w /work \
+  -u "$(id -u):$(id -g)" \
+  -e HOME=/tmp \
+  node:20 \
+  sh -c '
+    trap "kill 0" EXIT INT TERM
+    npm ci
+    npx webpack --watch &
+    npx sass --watch --load-path=node_modules sass:assets/css &
+    wait
+  '
