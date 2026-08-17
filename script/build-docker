@@ -1,0 +1,25 @@
+#!/bin/sh
+# Regenerate the committed build artifacts (assets/js/bundle.js,
+# assets/css/*.css) from source (js/*.ts, sass/*.scss) using a throwaway
+# node:20 Docker container. No local node/npm/yarn install required.
+#
+# Runs `sass` + `webpack` directly rather than `npm run build`, since the
+# latter also runs `npm run lint`, which mutates files in place
+# (eslint --fix, jsonlint --in-place) -- not something an asset-rebuild
+# script should do unattended.
+#
+# Usage: script/build-docker
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+docker run --rm \
+  -v "$PWD":/work \
+  -w /work \
+  -u "$(id -u):$(id -g)" \
+  -e HOME=/tmp \
+  node:20 \
+  sh -c "npm ci && npm run sass && npm run webpack"
+
+echo "Done. Review with: git status / git diff assets/"

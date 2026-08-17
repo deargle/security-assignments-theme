@@ -38,6 +38,32 @@ document.addEventListener('DOMContentLoaded', function(){
 //   anchors.add();
 // });
 
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('div.highlighter-rouge').forEach(function (block) {
+    const codeEl = block.querySelector('pre.highlight');
+    if (!codeEl) return;
+
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'copy-code-button';
+    button.setAttribute('aria-label', 'Copy code to clipboard');
+    button.innerHTML = '<i class="fas fa-copy"></i>';
+
+    button.addEventListener('click', function () {
+      navigator.clipboard.writeText(codeEl.textContent || '').then(function () {
+        button.classList.add('copied');
+        button.innerHTML = '<i class="fas fa-check"></i>';
+        setTimeout(function () {
+          button.classList.remove('copied');
+          button.innerHTML = '<i class="fas fa-copy"></i>';
+        }, 1500);
+      });
+    });
+
+    block.appendChild(button);
+  });
+});
+
 library.add(fas, far, fab);
 
 dom.watch();
